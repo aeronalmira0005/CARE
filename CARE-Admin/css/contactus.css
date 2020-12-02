@@ -1,0 +1,114 @@
+.navbar{
+  height: 10vh;
+}
+
+.navbar-brand{
+  width: 10%;
+  display: inline-block;
+}
+
+.logo-img{
+  position: relative;
+  width: 100%;
+}
+
+.container-contactus-body{
+  display: block;
+  position: relative;
+  height: 90vh;
+  width: 100%;
+}
+
+.float-img{
+  position: relative;
+  display: block;
+  opacity: 0.7;
+  animation: float-animation 3s infinite linear;
+  z-index: -1;
+  top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes float-animation {
+  from{transform: rotate(0deg);}
+  to{transform: rotate(359deg);}
+}
+
+.container-contactus-body::after{
+  content: "";
+  opacity: 0.4;
+  background-image: url("../images/contactus_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -2;
+}
+
+.text{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 0;
+
+}
+
+.container-carousel{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 8.5rem;
+}
+
+.card-img-top{
+  width: 100%;
+  height: 175px;
+}
+
+.footer{
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: white;
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{
+  transform: translateX(0);
+}

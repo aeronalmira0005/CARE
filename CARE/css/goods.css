@@ -1,0 +1,29 @@
+.navbar{
+  height: 10vh;
+}
+
+.navbar-brand{
+  width: 10%;
+  display: inline-block;
+}
+
+.logo-img{
+  position: relative;
+  width: 100%;
+}
+
+.container-goods-body{
+  display: block;
+  position: relative;
+  height: 90vh;
+  width: 100%;
+}
+
+.footer{
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: white;
+  height: auto;
+  width: 100%;
+}

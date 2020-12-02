@@ -1,0 +1,57 @@
+.navbar{
+  height: 10vh;
+}
+
+.navbar-brand{
+  width: 10%;
+  display: inline-block;
+}
+
+.logo-img{
+  position: relative;
+  width: 100%;
+}
+
+.container-index-body{
+  position: relative;
+  height: 90vh;
+  width: 100%;
+}
+
+.container-index-body img{
+  height: 0;
+  width: 0;
+}
+
+.index-body-img-1{
+  position: absolute;
+  left: 10vw;
+  margin-top: 2vh;
+}
+
+.index-body-img-2{
+  position: absolute;
+  right: 8vw;
+  margin-top: 15vh;
+}
+
+.index-body-img-3{
+  position: absolute;
+  left: 4vw;
+  bottom: 2vh;
+}
+
+@keyframes example {
+  from {height: 0;
+        width: 0;;}
+  to {height: 45%;
+      width: 40%;}
+}
+.footer{
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: white;
+  height: auto;
+  width: 100%;
+}
