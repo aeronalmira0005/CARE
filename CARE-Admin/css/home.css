@@ -1,0 +1,39 @@
+.navbar{
+  height: 10vh;
+}
+
+.navbar-brand{
+  width: 10%;
+  display: inline-block;
+}
+
+.logo-img{
+  position: relative;
+  width: 100%;
+}
+
+.container-home-body{
+  position: relative;
+  height: 90vh;
+  width: 100%;
+}
+
+.container-table{
+  height: 70vh;
+  overflow: scroll;
+}
+
+@keyframes example {
+  from {height: 0;
+        width: 0;;}
+  to {height: 45%;
+      width: 40%;}
+}
+.footer{
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: white;
+  height: auto;
+  width: 100%;
+}
