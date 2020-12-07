@@ -60,24 +60,35 @@
         <button type="submit" name="donation_type" class="btn btn-success mb-3" value="cash">In Cash</button>
       </form>
 
-      <form class="form-inline">
+
+
+      <form class="form-inline" action="#" method="post">
         <div class="form-group mb-2">
           <label for="staticEmail2" class="sr-only">Email</label>
-          <input type="text" class="form-control" id="staticEmail2" placeholder="Name">
+          <input type="text" class="form-control" id="staticEmail2" placeholder="Name" name="name">
         </div>
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputPassword2" class="sr-only">Password</label>
-          <input type="date" class="form-control" id="inputPassword2" placeholder="Date">
+          <input type="date" class="form-control" id="inputPassword2" placeholder="Date" name="date">
         </div>
-        <button type="submit" class="btn btn-secondary mb-2">Search</button>
+        <button type="submit" name="donation_type" class="btn btn-secondary mb-2" value="<?php echo $_GET['donation_type']; ?>">Search</button>
       </form>
       <div class="container-table">
 
         <?php
 
-            $donation_type = "";
+            $donation_type = $name = $date = "";
 
             $donation_type = $_GET["donation_type"];
+
+            if ($_SERVER['REQUEST_METHOD']=='POST'){
+
+              $name = $_POST["name"];
+              $date = $_POST["date"];
+
+
+
+            }
 
             $server = "localhost";
             $user = "root";
@@ -89,7 +100,30 @@
 
               if ($donation_type=="goods"){
 
-              $sql = "SELECT name, contact_number, address, list, sent_datetime FROM goods ORDER BY id DESC";
+                if (empty($name) && empty($date)){
+
+                  $sql = "SELECT name, contact_number, address, list, sent_datetime FROM goods ORDER BY id DESC";
+
+                }
+
+                else if (empty($date)){
+
+                  $date = strtotime($date);
+
+                  $date = date('Y-m-d', $date);
+
+                  $sql = "SELECT name, contact_number, address, list, sent_datetime FROM goods WHERE name LIKE '%".$name."%' ORDER BY id DESC";
+                }
+
+                else if (empty($name)){
+
+                  $sql = "SELECT name, contact_number, address, list, sent_datetime FROM goods WHERE CAST(sent_datetime AS DATE) = '".$date."' ORDER BY id DESC";
+                }
+
+                else{
+                  $sql = "SELECT name, contact_number, address, list, sent_datetime FROM goods WHERE name LIKE '%".$name."%' AND CAST(sent_datetime AS DATE) = '".$date."' ORDER BY id DESC";
+                }
+
               $result = mysqli_query($conn, $sql);
 
               echo "
@@ -122,7 +156,29 @@
 
           else if ($donation_type=="cash"){
 
-          $sql = "SELECT name, contact_number, address, sent_datetime FROM cash ORDER BY id DESC";
+            if (empty($name) && empty($date)){
+
+              $sql = "SELECT name, contact_number, address, sent_datetime FROM cash ORDER BY id DESC";
+            }
+
+            else if (empty($date)){
+
+              $date = strtotime($date);
+
+              $date = date('Y-m-d', $date);
+
+              $sql = "SELECT name, contact_number, address, sent_datetime FROM cash WHERE name= '".$name."' ORDER BY id DESC";
+            }
+
+            else if (empty($name)){
+
+              $sql = "SELECT name, contact_number, address, sent_datetime FROM cash WHERE CAST(sent_datetime AS DATE) = '".$date."' ORDER BY id DESC";
+            }
+
+            else {
+              $sql = "SELECT name, contact_number, address, sent_datetime FROM cash WHERE name= '".$name."' AND CAST(sent_datetime AS DATE) = '".$date."' ORDER BY id DESC";
+            }
+
           $result = mysqli_query($conn, $sql);
 
           echo "
